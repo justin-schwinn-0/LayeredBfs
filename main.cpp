@@ -223,7 +223,11 @@ int main(int argc,char** argv)
     {
         uid = std::stoi(argv[2]);
 
-        auto n = readConfig(argv[1],uid);
+        auto nodeData = readConfig(argv[1],uid);
+
+        nodeData.n.print()
+        
+        Utils::log("Distinguished Node:",nodeData.distNode);
 
     }
     else
