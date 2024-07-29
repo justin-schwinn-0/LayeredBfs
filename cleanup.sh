@@ -4,11 +4,12 @@
 # Change this to your netid
 netid=jts200006
 
+CONFIGNAME="asyncConfig.txt"
 # Root directory of your project
 PROJDIR=/home/justin/Desktop/code/CS6380/SyncGHS
 # Directory where the config file is located on your local system
-CONFIGLOCAL=$PROJDIR/testConfig.txt
-CONFIGDOCKER=/home/010/j/jt/jts200006/cs6380/SyncGHS/testConfig.txt
+CONFIGLOCAL=$PROJDIR/${CONFIGNAME}
+CONFIGDOCKER=/home/010/j/jt/jts200006/cs6380/SyncGHS/${CONFIGNAME}
 
 n=0
 
