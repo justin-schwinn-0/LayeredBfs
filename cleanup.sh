@@ -6,10 +6,10 @@ netid=jts200006
 
 CONFIGNAME="asyncConfig.txt"
 # Root directory of your project
-PROJDIR=/home/justin/Desktop/code/CS6380/SyncGHS
+PROJDIR=/home/justin/Desktop/code/CS6380/LayeredBfs
 # Directory where the config file is located on your local system
 CONFIGLOCAL=$PROJDIR/${CONFIGNAME}
-CONFIGDOCKER=/home/010/j/jt/jts200006/cs6380/SyncGHS/${CONFIGNAME}
+CONFIGDOCKER=/home/010/j/jt/jts200006/cs6380/LayeredBfs/${CONFIGNAME}
 
 n=0
 

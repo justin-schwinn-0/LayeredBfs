@@ -4,20 +4,20 @@
 netid=jts200006
 
 # Root directory of your project
-PROJDIR=/home/010/j/jt/jts200006/cs6380/SyncGHS
+PROJDIR=/home/010/j/jt/jts200006/cs6380/LayeredBfs
 
 CONFIGNAME="asyncConfig.txt"
 
 # Directory where the config file is located on your local system
-CONFIGLOCAL=/home/justin/Desktop/code/CS6380/SyncGHS/${CONFIGNAME}
+CONFIGLOCAL=/home/justin/Desktop/code/CS6380/LayeredBfs/${CONFIGNAME}
 
-CONFIGDOCKER=/home/010/j/jt/jts200006/cs6380/SyncGHS/${CONFIGNAME}
+CONFIGDOCKER=/home/010/j/jt/jts200006/cs6380/LayeredBfs/${CONFIGNAME}
 
 # Directory your java classes are in
 BINDIR=$PROJDIR/build
 
 # Your main project class
-PROG=SyncGhs
+PROG=LayeredBfs
 
 n=0
 
