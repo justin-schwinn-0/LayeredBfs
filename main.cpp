@@ -225,7 +225,7 @@ int main(int argc,char** argv)
 
         auto nodeData = readConfig(argv[1],uid);
 
-        nodeData.n.print()
+        nodeData.n.print();
         
         Utils::log("Distinguished Node:",nodeData.distNode);
 
