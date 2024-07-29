@@ -1,0 +1,12 @@
+# Number of nodes
+3
+# Here we list the individual nodes
+5 dc12.utdallas.edu 5234
+8 dc13.utdallas.edu 4223
+9 dc14.utdallas.edu 4293
+5
+# List of edges and their weight, one per line. An edge is denoted
+(5,9) 
+(5,8) 
+(8,9) 
+ 
