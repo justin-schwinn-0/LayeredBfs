@@ -16,7 +16,7 @@
 
 struct NodeInfo
 {
-    int numNodes;
+    int distNode;
     Node n;
 };
 
@@ -178,7 +178,7 @@ NodeInfo readConfig(std::string configFile, int popId = -1)
         {
             if(n.getUid() == popId)
             {
-                return {numNodes,n};
+                return {distNode,n};
             }
         }
 
@@ -192,7 +192,7 @@ NodeInfo readConfig(std::string configFile, int popId = -1)
         }
     }
 
-    return {numNodes,nodes[0]};
+    return {distNode,nodes[0]};
 }
 
 /*template<class T>
