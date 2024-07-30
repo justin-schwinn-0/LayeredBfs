@@ -2,6 +2,11 @@
 
 #include "Utils.h"
 
+LayeredBfsAlg::LayeredBfsAlg(Node& n):
+    rNode(n)
+{
+}
+
 void LayeredBfsAlg::handleMsg(std::string msg)
 {
 
@@ -20,7 +25,7 @@ void LayeredBfsAlg::sendMsg(int uid, int msgId, std::string msg)
     rNode.sendTo(uid,structuredMessage); 
 }
 
-Message LayeredBfsALg::decode(std::string msg)
+Message LayeredBfsAlg::decode(std::string msg)
 {
     auto idSegments = Utils::split(msg,ID_DELIM);
 
