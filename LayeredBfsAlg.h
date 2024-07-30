@@ -18,7 +18,7 @@ struct Message
     std::string payload;
 };
 
-class LayeredBfsALg 
+class LayeredBfsAlg 
 {
 public:
     LayeredBfsALg(Node& n); 
