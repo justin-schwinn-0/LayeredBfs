@@ -13,7 +13,7 @@ void LayeredBfsAlg::handleMsg(std::string msg)
 
     int num = Utils::strToInt(message.payload);
 
-    sendMsg(message.uid,message.msgId,num+1);
+    sendMsg(message.uid,message.msgId,std::to_string(num+1));
 }
 
 void LayeredBfsAlg::init()
