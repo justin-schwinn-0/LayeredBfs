@@ -213,7 +213,7 @@ void runAlg(NodeInfo& ni)
         lb.init();
     }
 
-    ni.n.listenToNeighbors(2000);
+    ni.n.listenToNeighbors();
 }
 
 int main(int argc,char** argv)

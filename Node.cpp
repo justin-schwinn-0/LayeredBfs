@@ -121,8 +121,6 @@ void Node::listenToNeighbors(int delayms)
 {
     while(!finishedAlg )
     {
-        std::this_thread::sleep_for(std::chrono::milliseconds(delayms));
-
         for(int fd : openRcv)
         {
             if(Utils::pollForFd(fd,100,POLLIN) > 0)
