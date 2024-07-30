@@ -9,6 +9,7 @@ const std::string ID_DELIM = "__";
 const std::string DATA_DELIM = "--";
 
 const int PARENT = 0;
+const int TEST = 1000;
 
 
 struct Message

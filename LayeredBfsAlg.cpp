@@ -9,14 +9,18 @@ LayeredBfsAlg::LayeredBfsAlg(Node& n):
 
 void LayeredBfsAlg::handleMsg(std::string msg)
 {
+    auto messgae = decode(msg);
 
+    int num = Utils::strToInt(message.payload);
+
+    sendMsg(message.uid,message.msgId,num+1);
 }
 
 void LayeredBfsAlg::init()
 {
     // send to all neighbors that i am the parent
 
-    rNode.flood(std::to_string(rNode.getUid())+ID_DELIM+"test"+DATA_DELIM+std::to_string(1));
+    rNode.flood(std::to_string(rNode.getUid())+ID_DELIM+std::to_string(TEST)+ID_DELIM+std::to_string(1));
 }
 
 void LayeredBfsAlg::sendMsg(int uid, int msgId, std::string msg)
