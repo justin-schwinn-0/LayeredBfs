@@ -10,12 +10,14 @@ set(Sources
     main.cpp
     Node.cpp
     Connection.cpp
+    LayeredBfsAlg.cpp
     Utils.cpp
 )
 
 set(Headers
     Node.h
     Connection.h
+    LayeredBfsAlg.h
     Utils.h
 )
 
