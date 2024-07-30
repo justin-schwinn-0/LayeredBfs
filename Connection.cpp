@@ -39,7 +39,7 @@ void Connection::sendMsg(std::string msg)
     do
     {
         std::this_thread::sleep_for(std::chrono::milliseconds(250));
-        int ret = sctp_sendmsg(mCon,(void *)msg.c_str(),strlen(msg.c_str())+1,NULL,0,0,0,0,0,0);
+        int ret = sctp_sendmsg(mCon,(void *)msg.c_str(),strlen(msg.c_str())+1,NULL,0,0,0,0,10,0);
 
         if(ret < 0)
         {

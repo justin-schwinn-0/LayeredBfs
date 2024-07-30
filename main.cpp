@@ -12,7 +12,7 @@
 #include "Node.h"
 #include "Connection.h"
 #include "Utils.h"
-
+#include "LayeredBfsAlg.h"
 
 struct NodeInfo
 {
@@ -195,26 +195,26 @@ NodeInfo readConfig(std::string configFile, int popId = -1)
     return {distNode,nodes[0]};
 }
 
-/*template<class T>
 void runAlg(NodeInfo& ni)
 {
     ni.n.print();
     ni.n.openSocket();
 
+    LayeredBfsAlg lb(ni.n);
 
-    Sync sync(ni.n.getNeighborsSize());
-
-    T t(ni.n,ni.numNodes);
-    sync.setHandlers<T>(t);
-
-    ni.n.setHandler(std::bind(&Sync::msgHandler,sync,std::placeholders::_1));
+    ni.n.setHandler(std::bind(&LayeredBfsAlg::handleMsg,lb,std::placeholders::_1));
 
     ni.n.connectAll();
 
     ni.n.acceptNeighbors();
-    sync.init();
+
+    if(ni.distNode == ni.n.getUid())
+    {
+        lb.init();
+    }
+
     ni.n.listenToNeighbors(2000);
-}*/
+}
 
 int main(int argc,char** argv)
 {
@@ -224,11 +224,10 @@ int main(int argc,char** argv)
         uid = std::stoi(argv[2]);
 
         auto nodeData = readConfig(argv[1],uid);
-
-        nodeData.n.print();
         
         Utils::log("Distinguished Node:",nodeData.distNode);
 
+        runAlg(nodeData);
     }
     else
     {
