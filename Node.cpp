@@ -117,7 +117,7 @@ void Node::sendExcept(int uid, std::string msg)
     }
 }
 
-void Node::listenToNeighbors(int delayms)
+void Node::listenToNeighbors()
 {
     while(!finishedAlg )
     {

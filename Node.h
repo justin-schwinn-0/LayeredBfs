@@ -42,7 +42,7 @@ public:
 
     void connectAll();
 
-    void listenToNeighbors(int delayms);
+    void listenToNeighbors();
 
     void recvMsg(int fd);
 
