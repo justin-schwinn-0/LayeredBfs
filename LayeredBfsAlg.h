@@ -21,7 +21,7 @@ struct Message
 class LayeredBfsAlg 
 {
 public:
-    LayeredBfsALg(Node& n); 
+    LayeredBfsAlg(Node& n); 
 
     void handleMsg(std::string msg);
 
