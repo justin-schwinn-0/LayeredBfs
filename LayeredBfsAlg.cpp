@@ -25,7 +25,7 @@ void LayeredBfsAlg::init()
 
 void LayeredBfsAlg::sendMsg(int uid, int msgId, std::string msg)
 {
-    std::string structuredMessage = std::to_string(uid)+ID_DELIM+std::to_string(msgId) + ID_DELIM + msg;
+    std::string structuredMessage = std::to_string(rNode.getUid())+ID_DELIM+std::to_string(msgId) + ID_DELIM + msg;
     rNode.sendTo(uid,structuredMessage); 
 }
 
