@@ -9,7 +9,7 @@ LayeredBfsAlg::LayeredBfsAlg(Node& n):
 
 void LayeredBfsAlg::handleMsg(std::string msg)
 {
-    auto messgae = decode(msg);
+    auto message = decode(msg);
 
     int num = Utils::strToInt(message.payload);
 
