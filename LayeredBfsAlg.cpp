@@ -27,5 +27,5 @@ Message LayeredBfsALg::decode(std::string msg)
     int uid = Utils::strToInt(idSegments[0]);
     int msgId = Utils::strToInt(idSegments[1]);
 
-    return {uid,msgId,segments[2]};
+    return {uid,msgId,idSegments[2]};
 }
