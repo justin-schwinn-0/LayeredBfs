@@ -32,12 +32,12 @@ void LayeredBfsAlg::handleParentMsg(Message msg)
         parent = msg.uid;
         mDepth = Utils::strToInt(msg.payload);
         Utils::log("sending child ack");
-        sendMsg(msg.uid,CHILD_ACK,"none");
+        sendMsg(msg.uid,CHILD_ACK,"none")
     }
     else
     {
         Utils::log("sending refuse to",msg.uid);
-        sendMsg(msg.uid,REF_ACK,"none");
+        sendMsg(msg.uid,REF_ACK,"none")
     }
 }
 
@@ -68,4 +68,9 @@ Message LayeredBfsAlg::decode(std::string msg)
     int msgId = Utils::strToInt(idSegments[1]);
 
     return {uid,msgId,idSegments[2]};
+}
+
+std::string LayeredBfsAlg::getParentMsg(int depth)
+{
+    return std::to_string(rNode.getUid())+ID_DELIM+std::to_string(PARENT)+ID_DELIM+std::to_string(depth);
 }
