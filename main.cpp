@@ -202,7 +202,7 @@ void runAlg(NodeInfo& ni)
 
     LayeredBfsAlg lb(ni.n);
 
-    ni.n.setHandler(std::bind(&LayeredBfsAlg::handleMsg,lb,std::placeholders::_1));
+    ni.n.setHandler(std::bind(&LayeredBfsAlg::handleMsg,&lb,std::placeholders::_1));
 
     ni.n.connectAll();
 
