@@ -53,5 +53,5 @@ Message LayeredBfsAlg::decode(std::string msg)
 
 std::string LayeredBfsAlg::getParentMsg()
 {
-    return std::to_string(rNode.getUid())+ID_DELIM+std::to_string(PARENT)+ID_DELIM;
+    return std::to_string(rNode.getUid())+ID_DELIM+std::to_string(PARENT)+ID_DELIM+"none";
 }
