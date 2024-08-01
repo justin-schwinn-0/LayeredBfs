@@ -9,6 +9,7 @@ LayeredBfsAlg::LayeredBfsAlg(Node& n):
 
 void LayeredBfsAlg::handleMsg(std::string msg)
 {
+    Utils::log("got",msg);
     auto message = decode(msg);
 
     switch(message.msgId)
