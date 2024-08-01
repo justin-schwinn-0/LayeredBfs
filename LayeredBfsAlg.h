@@ -52,7 +52,7 @@ private:
 
     int parent = -1;
     int mDepth = -1;
-    int expectedConveregs = -1;
+    int expectedConverges = -1;
 
     std::vector<int> children;
 };
