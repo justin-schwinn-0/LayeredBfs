@@ -11,7 +11,7 @@ void LayeredBfsAlg::handleMsg(std::string msg)
 {
     auto message = decode(msg);
 
-    swtich(message.msgId)
+    switch(message.msgId)
     {
         case PARENT:
             handleParentMsg(message);
