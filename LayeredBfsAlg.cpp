@@ -102,7 +102,7 @@ bool LayeredBfsAlg::converge()
         Utils::log("did converge");
         return true;
     }
-    Utils::log("didnt converge");
+    Utils::log("didnt converge",expectedConverges);
     return false;
 }
 
