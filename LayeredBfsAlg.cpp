@@ -92,6 +92,7 @@ void LayeredBfsAlg::init()
     mDepth = 0;
     rNode.flood(getParentMsg(mDepth));
     expectedConverges = rNode.getNeighborsSize();
+    Utils::log("expect converge",expectedConverges);
 }
 
 bool LayeredBfsAlg::converge()
