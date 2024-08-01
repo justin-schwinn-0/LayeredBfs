@@ -32,12 +32,12 @@ void LayeredBfsAlg::handleParentMsg(Message msg)
         parent = msg.uid;
         mDepth = Utils::strToInt(msg.payload);
         Utils::log("sending child ack");
-        sendMsg(msg.uid,CHILD_ACK,"none")
+        sendMsg(msg.uid,CHILD_ACK,"none");
     }
     else
     {
         Utils::log("sending refuse to",msg.uid);
-        sendMsg(msg.uid,REF_ACK,"none")
+        sendMsg(msg.uid,REF_ACK,"none");
     }
 }
 
