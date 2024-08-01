@@ -11,9 +11,20 @@ void LayeredBfsAlg::handleMsg(std::string msg)
 {
     auto message = decode(msg);
 
-    int num = Utils::strToInt(message.payload);
+    swtich(message.msgId)
+    {
+        case PARENT:
+            handleParentMsg(message);
+            break;
+        default:
+            Utils::log("unknown message Id:", message.msgId);
+            break;
+    }
+}
 
-    sendMsg(message.uid,message.msgId,std::to_string(num+1));
+void LayeredBfsAlg::handleParentMsg(Message msg)
+{
+    Utils::log("got parent message", msg.uid);
 }
 
 void LayeredBfsAlg::init()
@@ -37,4 +48,9 @@ Message LayeredBfsAlg::decode(std::string msg)
     int msgId = Utils::strToInt(idSegments[1]);
 
     return {uid,msgId,idSegments[2]};
+}
+
+std::string LayeredBfsAlg::getParentMsg()
+{
+
 }
