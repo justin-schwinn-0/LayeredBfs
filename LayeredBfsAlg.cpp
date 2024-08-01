@@ -97,7 +97,7 @@ void LayeredBfsAlg::init()
 bool LayeredBfsAlg::converge()
 {
     expectedConverges--;
-    if(expectedConvereges == 0)
+    if(expectedConverges == 0)
     {
         return true;
     }
