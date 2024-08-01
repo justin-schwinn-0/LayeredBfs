@@ -40,7 +40,7 @@ public:
 
     Message decode(std::string msg);
 
-    std::string getParentMsg();
+    std::string getParentMsg(int depth);
 private:
     Node& rNode;
 
