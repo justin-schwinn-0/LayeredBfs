@@ -74,7 +74,7 @@ void LayeredBfsAlg::handleLayerBcMsg(Message msg)
 
     for(int n : rNode.getConnectedUids())
     {
-        if( != parent)
+        if( n != parent)
         {
             sendMsg(n,PARENT,std::to_string(mDepth));
             expectedConverges++;
