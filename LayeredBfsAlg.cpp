@@ -26,6 +26,21 @@ void LayeredBfsAlg::handleMsg(std::string msg)
 void LayeredBfsAlg::handleParentMsg(Message msg)
 {
     Utils::log("got parent message", msg.uid);
+    if(parent == -1)
+    {
+        Utils::log("setting parent to", msg.uid);
+        parent = msg.uid;
+        Utils::log("sending child ack");
+    }
+    else
+    {
+        Utils::log("sending refuse to",msg.uid);
+    }
+}
+
+void LayeredBfsAlg::handleChildAckMsg(Message msg)
+{
+    Utils::log("got child ack message", msg.uid);
 }
 
 void LayeredBfsAlg::init()

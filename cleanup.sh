@@ -4,7 +4,7 @@
 # Change this to your netid
 netid=jts200006
 
-CONFIGNAME="asyncConfig.txt"
+CONFIGNAME="testConfig.txt"
 # Root directory of your project
 PROJDIR=/home/justin/Desktop/code/CS6380/LayeredBfs
 # Directory where the config file is located on your local system
