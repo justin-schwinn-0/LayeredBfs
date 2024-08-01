@@ -53,7 +53,7 @@ void LayeredBfsAlg::handleChildAckMsg(Message msg)
 
     if(converge())
     {
-        startlayerbroadcast();
+        startLayerBroadcast();
     }
 }
 
@@ -64,7 +64,7 @@ void LayeredBfsAlg::handleRefAckMsg(Message msg)
 
     if(converge())
     {
-        startlayerbroadcast();
+        startLayerBroadcast();
     }
 }
 
