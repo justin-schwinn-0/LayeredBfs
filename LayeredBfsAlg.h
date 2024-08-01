@@ -35,6 +35,8 @@ public:
 
     void handleRefAckMsg(Message msg);
 
+    void handleLayerBcMsg(Message msg);
+
     void startLayerBroadcast();
     
     void init();

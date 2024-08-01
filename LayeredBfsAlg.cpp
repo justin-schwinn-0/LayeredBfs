@@ -36,7 +36,7 @@ void LayeredBfsAlg::handleParentMsg(Message msg)
         Utils::log("setting parent to", msg.uid);
         parent = msg.uid;
         mDepth = Utils::strToInt(msg.payload);
-        Utils::log("sending child ack");
+        Utils::log("setting depth", mDepth);
         sendMsg(msg.uid,CHILD_ACK,"none");
     }
     else
@@ -66,6 +66,21 @@ void LayeredBfsAlg::handleRefAckMsg(Message msg)
     {
         startLayerBroadcast();
     }
+}
+
+void LayeredBfsAlg::handleLayerBcMsg(Message msg)
+{
+    Utils::log("got layer message", msg.uid);
+
+    for(int n : rNode.getConnectedUids())
+    {
+        if( != parent)
+        {
+            sendMsg(n,PARENT,std::to_string(mDepth));
+            expectedConverges++;
+        }
+    }
+
 }
 
 void LayeredBfsAlg::startLayerBroadcast()
