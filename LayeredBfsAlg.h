@@ -11,6 +11,7 @@ const std::string DATA_DELIM = "--";
 const int PARENT = 0;
 const int CHILD_ACK = 1;
 const int REF_ACK = 2;
+const int LAYER_BC = 3;
 const int TEST = 1000;
 
 
@@ -34,18 +35,26 @@ public:
 
     void handleRefAckMsg(Message msg);
 
+    void startLayerBroadcast();
+    
     void init();
+
+    bool converge();
 
     void sendMsg(int uid, int msgId, std::string msg);
 
     Message decode(std::string msg);
 
     std::string getParentMsg(int depth);
+
 private:
     Node& rNode;
 
     int parent = -1;
     int mDepth = -1;
+    int expectedConveregs = -1;
+
+    std::vector<int> children;
 };
 
 #endif

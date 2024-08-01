@@ -9,7 +9,6 @@ LayeredBfsAlg::LayeredBfsAlg(Node& n):
 
 void LayeredBfsAlg::handleMsg(std::string msg)
 {
-    Utils::log("got",msg);
     auto message = decode(msg);
 
     switch(message.msgId)
@@ -50,12 +49,40 @@ void LayeredBfsAlg::handleParentMsg(Message msg)
 void LayeredBfsAlg::handleChildAckMsg(Message msg)
 {
     Utils::log("got child ack message", msg.uid);
+    children.push_back(msg.uid);
+
+    if(converge())
+    {
+        startlayerbroadcast();
+    }
 }
 
 
 void LayeredBfsAlg::handleRefAckMsg(Message msg)
 {
     Utils::log("got ref ack message", msg.uid);
+
+    if(converge())
+    {
+        startlayerbroadcast();
+    }
+}
+
+void LayeredBfsAlg::startLayerBroadcast()
+{
+    if(parent != -1)
+    {
+        Utils::log("converge up not implemented");
+        // converge cast up
+    }
+    else
+    {
+        // broadcast down
+        for(int c : children)
+        {
+            sendMsg(c,LAYER_BC,"none");
+        }
+    }
 }
 
 void LayeredBfsAlg::init()
@@ -64,6 +91,17 @@ void LayeredBfsAlg::init()
 
     mDepth = 0;
     rNode.flood(getParentMsg(mDepth));
+    expectedConverges = rNode.getNeighborsSize();
+}
+
+bool LayeredBfsAlg::converge()
+{
+    expectedConverges--;
+    if(expectedConvereges == 0)
+    {
+        return true;
+    }
+    return false;
 }
 
 void LayeredBfsAlg::sendMsg(int uid, int msgId, std::string msg)
