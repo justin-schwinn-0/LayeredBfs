@@ -30,11 +30,14 @@ void LayeredBfsAlg::handleParentMsg(Message msg)
     {
         Utils::log("setting parent to", msg.uid);
         parent = msg.uid;
+        mDepth = Utils::strToInt(msg.payload);
         Utils::log("sending child ack");
+        sendMsg(msg.uid,CHILD_ACK,"none");
     }
     else
     {
         Utils::log("sending refuse to",msg.uid);
+        sendMsg(msg.uid,REF_ACK,"none");
     }
 }
 
@@ -47,7 +50,8 @@ void LayeredBfsAlg::init()
 {
     // send to all neighbors that i am the parent
 
-    rNode.flood(getParentMsg());
+    mDepth = 0;
+    rNode.flood(getParentMsg(mDepth));
 }
 
 void LayeredBfsAlg::sendMsg(int uid, int msgId, std::string msg)
@@ -64,9 +68,4 @@ Message LayeredBfsAlg::decode(std::string msg)
     int msgId = Utils::strToInt(idSegments[1]);
 
     return {uid,msgId,idSegments[2]};
-}
-
-std::string LayeredBfsAlg::getParentMsg()
-{
-    return std::to_string(rNode.getUid())+ID_DELIM+std::to_string(PARENT)+ID_DELIM+"none";
 }
