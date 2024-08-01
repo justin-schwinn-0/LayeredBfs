@@ -17,6 +17,12 @@ void LayeredBfsAlg::handleMsg(std::string msg)
         case PARENT:
             handleParentMsg(message);
             break;
+        case CHILD_ACK:
+            handleParentMsg(message);
+            break;
+        case REF_ACK:
+            handleParentMsg(message);
+            break;
         default:
             Utils::log("unknown message Id:", message.msgId);
             break;
@@ -44,6 +50,12 @@ void LayeredBfsAlg::handleParentMsg(Message msg)
 void LayeredBfsAlg::handleChildAckMsg(Message msg)
 {
     Utils::log("got child ack message", msg.uid);
+}
+
+
+void LayeredBfsAlg::handleRefAckMsg(Message msg)
+{
+    Utils::log("got ref ack message", msg.uid);
 }
 
 void LayeredBfsAlg::init()
