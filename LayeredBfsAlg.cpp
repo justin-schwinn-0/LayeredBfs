@@ -61,6 +61,8 @@ void LayeredBfsAlg::handleChildAckMsg(Message msg)
 
     Utils::log("decendednts added", childAdds, "from this connection");
 
+    nodesAdded += childAdds;
+
     if(converge())
     {
         handleAddLayerConverge();
@@ -131,7 +133,8 @@ void LayeredBfsAlg::handleAddLayerConverge()
     {
         Utils::log("====== LAYER ADDED");
         // converge cast up
-        sendMsg(parent,LAYER_CC,std::to_string(children.size()));
+        sendMsg(parent,LAYER_CC,std::to_string(nodesAdded));
+        nodesAdded = 0;
     }
     else
     {
