@@ -145,7 +145,7 @@ void LayeredBfsAlg::handleFinish()
 
     std::string childStr = "";
 
-    for(int c : chidlren)
+    for(int c : children)
     {
         childStr += std::to_string(c) + " ";
     }
