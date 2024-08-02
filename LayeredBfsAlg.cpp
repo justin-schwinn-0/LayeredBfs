@@ -109,7 +109,7 @@ void LayeredBfsAlg::handleLayerCcMsg(Message msg)
         }
         else
         {
-            Utils::log("root restart BC not done yet")
+            Utils::log("root restart BC not done yet");
         }
     }
 }
