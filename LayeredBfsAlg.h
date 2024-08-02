@@ -63,7 +63,7 @@ private:
     int mDepth = -1;
     int expectedConverges = -1;
 
-    int nodesAdded = -1;
+    int nodesAdded =0;
 
     std::vector<int> children;
 };
