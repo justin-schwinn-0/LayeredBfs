@@ -59,9 +59,8 @@ void LayeredBfsAlg::handleChildAckMsg(Message msg)
 
     int childAdds = Utils::strToInt(msg.payload);
 
-    Utils::log("decendednts added", childAdds, "from this connection");
-
     nodesAdded += childAdds;
+    Utils::log("decendednts added", childAdds, "from this connection,",nodesAdded,"total");
 
     if(converge())
     {
