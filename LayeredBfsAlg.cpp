@@ -151,7 +151,8 @@ void LayeredBfsAlg::handleFinish()
     }
 
     Utils::log("children:",childStr);
-    Utils::log("degree:",children.size()+1);
+    int degree = children.size() + (parent == -1 ? 0 : 1);
+    Utils::log("degree:",degree);
 
     if(parent == -1)
     {
