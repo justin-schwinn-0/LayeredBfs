@@ -43,7 +43,7 @@ void LayeredBfsAlg::handleParentMsg(Message msg)
         parent = msg.uid;
         mDepth = Utils::strToInt(msg.payload)+1;
         Utils::log("setting depth", mDepth);
-        sendMsg(msg.uid,CHILD_ACK,"none");
+        sendMsg(msg.uid,CHILD_ACK,"1");
     }
     else
     {
