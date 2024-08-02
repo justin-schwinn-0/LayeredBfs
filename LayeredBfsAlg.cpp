@@ -124,7 +124,7 @@ void LayeredBfsAlg::handleAddLayerConverge()
 {
     if(parent != -1)
     {
-        Utils::log("converge up");
+        Utils::log("====== LAYER ADDED");
         // converge cast up
         sendMsg(parent,LAYER_CC,std::to_string(children.size()));
     }
