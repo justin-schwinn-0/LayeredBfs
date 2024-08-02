@@ -63,6 +63,8 @@ private:
     int mDepth = -1;
     int expectedConverges = -1;
 
+    int highestDegree = 0;
+
     int nodesAdded =0;
 
     std::vector<int> children;

@@ -111,12 +111,21 @@ void LayeredBfsAlg::handleLayerCcMsg(Message msg)
 {
     Utils::log("got layer cc message", msg.uid);
 
+    auto splits = Utils::split(msg.payload,DATA_DELIM);
+
+    int nodes = utils::strtoint(splits[0]);
+    int degree = utils::strtoint(splits[1]);
+    nodesAdded += nodes;
+
+    compareDegree(degree);
+
+
     if(converge())
     {
         if(parent != -1)
         {
             // sum up the children sizes and send
-            sendMsg(parent,LAYER_CC,std::to_string(nodesAdded));
+            sendMsg(parent,LAYER_CC,std::to_string(nodesAdded)+DATA_DELIM+std::to_string(highestDegree));
         }
         else
         {
@@ -131,7 +140,8 @@ void LayeredBfsAlg::handleAddLayerConverge()
     {
         Utils::log("====== LAYER ADDED");
         // converge cast up
-        sendMsg(parent,LAYER_CC,std::to_string(nodesAdded));
+        compareDegree(children.size()+1);
+        sendMsg(parent,LAYER_CC,std::to_string(nodesAdded)+DATA_DELIM+std::to_string(highestDegree));
     }
     else
     {
@@ -173,11 +183,32 @@ void LayeredBfsAlg::broadcastDown()
     }
 }
 
+void LayeredBfsAlg::compareDegree(int d)
+{
+    if(d > highestDegree)
+    {
+        highestDegree = d;
+    }
+}
+
 void LayeredBfsAlg::finishPhase()
 {
     Utils::log("===========FINISHED PHASE===========");
     Utils::log("tree added", nodesAdded, " nodes");
-    broadcastDown();
+
+    if(nodesAdded != 0)
+    {
+        broadcastDown();
+    }
+    else
+    {
+        printFinish();
+    }
+}
+
+void LayeredBfsAlg::printFinish();
+{
+    
 }
 
 void LayeredBfsAlg::sendMsg(int uid, int msgId, std::string msg)
