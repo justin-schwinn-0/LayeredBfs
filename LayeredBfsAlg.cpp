@@ -137,7 +137,7 @@ void LayeredBfsAlg::handleLayerCcMsg(Message msg)
         }
     }
 }
-void LayeredBfsAlg::handleFinish(Message msg)
+void LayeredBfsAlg::handleFinish()
 {
     Utils::log("Print finish and propogate!");
 
