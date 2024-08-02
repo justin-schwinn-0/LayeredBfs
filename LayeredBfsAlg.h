@@ -13,7 +13,7 @@ const int CHILD_ACK = 1;
 const int REF_ACK = 2;
 const int LAYER_BC = 3;
 const int LAYER_CC = 4
-const int FIN = 4
+const int FIN = 5;
 const int TEST = 1000;
 
 
