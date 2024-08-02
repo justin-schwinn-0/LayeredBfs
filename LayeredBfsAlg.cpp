@@ -29,7 +29,7 @@ void LayeredBfsAlg::handleMsg(std::string msg)
             handleLayerCcMsg(message);
             break;
         case FIN:
-            handleFinish(message);
+            handleFinish();
             break;
         default:
             Utils::log("unknown message Id:", message.msgId);
@@ -216,7 +216,8 @@ void LayeredBfsAlg::finishPhase()
     }
     else
     {
-        sendMsg(rNode.getUid(),FIN,"none");
+        //sendMsg(rNode.getUid(),FIN,"none");
+        handleFinish();
     }
     nodesAdded = 0;
 }

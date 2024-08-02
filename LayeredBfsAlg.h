@@ -41,7 +41,7 @@ public:
 
     void handleLayerCcMsg(Message msg);
 
-    void handleFinish(Message msg);
+    void handleFinish();
 
     void handleAddLayerConverge();
     
