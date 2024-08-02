@@ -92,6 +92,11 @@ void LayeredBfsAlg::handleLayerBcMsg(Message msg)
 void LayeredBfsAlg::handleLayerCcMsg(Message msg)
 {
     Utils::log("got layer cc message", msg.uid);
+
+    if(converge())
+    {
+        broadcastDown();
+    }
 }
 
 void LayeredBfsAlg::handleAddLayerConverge()
