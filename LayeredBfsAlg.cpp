@@ -117,12 +117,11 @@ void LayeredBfsAlg::handleLayerCcMsg(Message msg)
         if(parent != -1)
         {
             // sum up the children sizes and send
-            sendMsg(parent,LAYER_CC,"sum here");
+            sendMsg(parent,LAYER_CC,std::to_string(nodesAdded));
         }
         else
         {
-            Utils::log("root restart BC not done yet");
-            broadcastDown();
+            finishPhase();
         }
     }
 }
@@ -137,9 +136,7 @@ void LayeredBfsAlg::handleAddLayerConverge()
     }
     else
     {
-        Utils::log("===========FINISHED PHASE===========");
-        Utils::log("tree added", nodesAdded, " nodes");
-        broadcastDown();
+        finishPhase();
     }
 }
 
@@ -175,6 +172,13 @@ void LayeredBfsAlg::broadcastDown()
         sendMsg(c,LAYER_BC,"none");
         expectedConverges++;
     }
+}
+
+void LayeredBfsAlg::finishPhase()
+{
+    Utils::log("===========FINISHED PHASE===========");
+    Utils::log("tree added", nodesAdded, " nodes");
+    broadcastDown();
 }
 
 void LayeredBfsAlg::sendMsg(int uid, int msgId, std::string msg)
