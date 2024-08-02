@@ -40,31 +40,25 @@ void LayeredBfsAlg::handleMsg(std::string msg)
 
 void LayeredBfsAlg::handleParentMsg(Message msg)
 {
-    Utils::log("got parent message", msg.uid);
     if(parent == -1)
     {
-        Utils::log("setting parent to", msg.uid);
         parent = msg.uid;
         mDepth = Utils::strToInt(msg.payload)+1;
-        Utils::log("setting depth", mDepth);
         sendMsg(msg.uid,CHILD_ACK,"1");
     }
     else
     {
-        Utils::log("sending refuse to",msg.uid);
         sendMsg(msg.uid,REF_ACK,"none");
     }
 }
 
 void LayeredBfsAlg::handleChildAckMsg(Message msg)
 {
-    Utils::log("got child ack message", msg.uid);
     children.push_back(msg.uid);
 
     int childAdds = Utils::strToInt(msg.payload);
 
     nodesAdded += childAdds;
-    Utils::log("decendednts added", childAdds, "from this connection,",nodesAdded,"total");
 
     if(converge())
     {
@@ -75,8 +69,6 @@ void LayeredBfsAlg::handleChildAckMsg(Message msg)
 
 void LayeredBfsAlg::handleRefAckMsg(Message msg)
 {
-    Utils::log("got ref ack message", msg.uid);
-
     if(converge())
     {
         handleAddLayerConverge();
@@ -85,8 +77,6 @@ void LayeredBfsAlg::handleRefAckMsg(Message msg)
 
 void LayeredBfsAlg::handleLayerBcMsg(Message msg)
 {
-    Utils::log("got layer message", msg.uid);
-
     if(children.size() == 0)
     {
         expectedConverges = 0;
@@ -101,7 +91,6 @@ void LayeredBfsAlg::handleLayerBcMsg(Message msg)
 
         if(expectedConverges == 0)
         {
-            Utils::log("no children here, tree branch complete before send");
             sendMsg(parent,LAYER_CC,std::to_string(nodesAdded)+DATA_DELIM+std::to_string(highestDegree));
         }
     }
@@ -114,8 +103,6 @@ void LayeredBfsAlg::handleLayerBcMsg(Message msg)
 
 void LayeredBfsAlg::handleLayerCcMsg(Message msg)
 {
-    Utils::log("got layer cc message", msg.uid);
-
     auto splits = Utils::split(msg.payload,DATA_DELIM);
 
     int nodes = Utils::strToInt(splits[0]);
@@ -140,6 +127,8 @@ void LayeredBfsAlg::handleLayerCcMsg(Message msg)
 }
 void LayeredBfsAlg::handleFinish()
 {
+
+    Utils::log("Finished Layered BFS");
 
     Utils::log("Parent",parent);
 
@@ -169,7 +158,6 @@ void LayeredBfsAlg::handleAddLayerConverge()
 {
     if(parent != -1)
     {
-        Utils::log("====== LAYER ADDED");
         // converge cast up
         compareDegree(children.size()+1);
         sendMsg(parent,LAYER_CC,std::to_string(nodesAdded)+DATA_DELIM+std::to_string(highestDegree));
@@ -187,19 +175,15 @@ void LayeredBfsAlg::init()
     mDepth = 0;
     rNode.flood(getParentMsg(mDepth));
     expectedConverges = rNode.getNeighborsSize();
-    Utils::log("expect converge",expectedConverges);
 }
 
 bool LayeredBfsAlg::converge()
 {
-    Utils::log("see converge",expectedConverges);
     expectedConverges--;
     if(expectedConverges == 0)
     {
-        Utils::log("did converge");
         return true;
     }
-    Utils::log("didnt converge",expectedConverges);
     return false;
 }
 
