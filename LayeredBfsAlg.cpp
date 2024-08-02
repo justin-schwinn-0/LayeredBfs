@@ -134,10 +134,11 @@ void LayeredBfsAlg::handleAddLayerConverge()
         Utils::log("====== LAYER ADDED");
         // converge cast up
         sendMsg(parent,LAYER_CC,std::to_string(nodesAdded));
-        nodesAdded = 0;
     }
     else
     {
+        Utils::log("===========FINISHED PHASE===========");
+        Utils::log("tree added", nodesAdded, " nodes");
         broadcastDown();
     }
 }
