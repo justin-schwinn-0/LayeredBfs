@@ -104,11 +104,7 @@ void LayeredBfsAlg::handleAddLayerConverge()
     }
     else
     {
-        // broadcast down
-        for(int c : children)
-        {
-            sendMsg(c,LAYER_BC,"none");
-        }
+        broadcastDown();
     }
 }
 
@@ -133,6 +129,15 @@ bool LayeredBfsAlg::converge()
     }
     Utils::log("didnt converge",expectedConverges);
     return false;
+}
+
+void LayeredBfsAlg::broadcastDown()
+{
+    // broadcast down
+    for(int c : children)
+    {
+        sendMsg(c,LAYER_BC,"none");
+    }
 }
 
 void LayeredBfsAlg::sendMsg(int uid, int msgId, std::string msg)
