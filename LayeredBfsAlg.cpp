@@ -25,6 +25,9 @@ void LayeredBfsAlg::handleMsg(std::string msg)
         case LAYER_BC:
             handleLayerBcMsg(message);
             break;
+        case LAYER_CC:
+            handleLayerCcMsg(message);
+            break;
         default:
             Utils::log("unknown message Id:", message.msgId);
             break;
@@ -56,7 +59,7 @@ void LayeredBfsAlg::handleChildAckMsg(Message msg)
 
     if(converge())
     {
-        startLayerBroadcast();
+        handleAddLayerConverge();
     }
 }
 
@@ -67,7 +70,7 @@ void LayeredBfsAlg::handleRefAckMsg(Message msg)
 
     if(converge())
     {
-        startLayerBroadcast();
+        handleAddLayerConverge();
     }
 }
 
@@ -84,15 +87,20 @@ void LayeredBfsAlg::handleLayerBcMsg(Message msg)
             expectedConverges++;
         }
     }
-
 }
 
-void LayeredBfsAlg::startLayerBroadcast()
+void LayeredBfsAlg::handleLayerBcMsg(Message msg)
+{
+    Utils::log("got layer cc message", msg.uid);
+}
+
+void LayeredBfsAlg::handleAddLayerConverge()
 {
     if(parent != -1)
     {
-        Utils::log("converge up not implemented");
+        Utils::log("converge up");
         // converge cast up
+        sendMsg(parent,LAYER_CC,std::to_string(children.size()));
     }
     else
     {
