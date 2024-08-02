@@ -151,7 +151,6 @@ void Node::recvMsg(int fd)
         //std::cout << "Flags: " << flags << std::endl;
         msgHandler(strMsg);
     }
-    std::cout << std::endl;
 }
 
 Connection Node::getOwnConnection()
