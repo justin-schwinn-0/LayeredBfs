@@ -113,8 +113,8 @@ void LayeredBfsAlg::handleLayerCcMsg(Message msg)
 
     auto splits = Utils::split(msg.payload,DATA_DELIM);
 
-    int nodes = utils::strtoint(splits[0]);
-    int degree = utils::strtoint(splits[1]);
+    int nodes = Utils::strtoint(splits[0]);
+    int degree = Utils::strtoint(splits[1]);
     nodesAdded += nodes;
 
     compareDegree(degree);
