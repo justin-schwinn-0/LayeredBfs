@@ -75,6 +75,7 @@ void LayeredBfsAlg::handleLayerBcMsg(Message msg)
 {
     Utils::log("got layer message", msg.uid);
 
+    expectedConverges = 0;
     for(int n : rNode.getConnectedUids())
     {
         if( n != parent)
