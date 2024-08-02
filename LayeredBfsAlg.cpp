@@ -150,6 +150,7 @@ void LayeredBfsAlg::broadcastDown()
     for(int c : children)
     {
         sendMsg(c,LAYER_BC,"none");
+        expectedConverges++;
     }
 }
 
