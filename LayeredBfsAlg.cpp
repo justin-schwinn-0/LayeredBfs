@@ -89,6 +89,11 @@ void LayeredBfsAlg::handleLayerBcMsg(Message msg)
                 expectedConverges++;
             }
         }
+
+        if(expectedConverges == 0)
+        {
+            Utils::log("no children here, tree branch complete");
+        }
     }
     else
     {
