@@ -55,7 +55,6 @@ public:
 
     void compareDegree(int d);
 
-
     void sendMsg(int uid, int msgId, std::string msg);
 
     Message decode(std::string msg);

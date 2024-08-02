@@ -139,12 +139,26 @@ void LayeredBfsAlg::handleLayerCcMsg(Message msg)
 }
 void LayeredBfsAlg::handleFinish()
 {
-    Utils::log("Print finish and propogate!");
+
+    Utils::log("Parent",parent);
+
+    Utils::log("children:");
+    Utils::printVector(children);
+
+    Utils::log("degree:",children.size()+1);
+
+    if(parent == -1)
+    {
+        Utils::log("highest degree in tree:",highestDegree);
+    }
 
     for(int c : children)
     {
         sendMsg(c,FIN,"none");
     }
+
+    sleep(1);
+    rNode.finishAlg();
 }
 
 void LayeredBfsAlg::handleAddLayerConverge()
