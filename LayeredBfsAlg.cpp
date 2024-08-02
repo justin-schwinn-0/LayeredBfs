@@ -143,9 +143,14 @@ void LayeredBfsAlg::handleFinish()
 
     Utils::log("Parent",parent);
 
-    Utils::log("children:");
-    Utils::printVector(children);
+    std::string childStr = "";
 
+    for(int c : chidlren)
+    {
+        childStr += std::to_string(c) + " ";
+    }
+
+    Utils::log("children:",childStr);
     Utils::log("degree:",children.size()+1);
 
     if(parent == -1)
