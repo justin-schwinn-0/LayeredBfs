@@ -195,6 +195,7 @@ void LayeredBfsAlg::finishPhase()
 {
     Utils::log("===========FINISHED PHASE===========");
     Utils::log("tree added", nodesAdded, " nodes");
+    
 
     if(nodesAdded != 0)
     {
@@ -204,6 +205,7 @@ void LayeredBfsAlg::finishPhase()
     {
         printFinish();
     }
+    nodesAdded = 0;
 }
 
 void LayeredBfsAlg::printFinish()
