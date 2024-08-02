@@ -1,4 +1,5 @@
 #include "LayeredBfsAlg.h"
+#include <unistd.h>
 
 #include "Utils.h"
 
