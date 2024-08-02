@@ -28,6 +28,9 @@ void LayeredBfsAlg::handleMsg(std::string msg)
         case LAYER_CC:
             handleLayerCcMsg(message);
             break;
+        case LAYER_CC:
+            handleFinish(message);
+            break;
         default:
             Utils::log("unknown message Id:", message.msgId);
             break;
@@ -98,6 +101,7 @@ void LayeredBfsAlg::handleLayerBcMsg(Message msg)
         if(expectedConverges == 0)
         {
             Utils::log("no children here, tree branch complete before send");
+            sendMsg(parent,LAYER_CC,std::to_string(nodesAdded)+DATA_DELIM+std::to_string(highestDegree));
         }
     }
     else
@@ -131,6 +135,15 @@ void LayeredBfsAlg::handleLayerCcMsg(Message msg)
         {
             finishPhase();
         }
+    }
+}
+void LayeredBfsAlg::handleFinish()
+{
+    Utils::log("Print finish and propogate!") 
+
+    for(int c : children)
+    {
+        sendMsg(c,FIN,"none");
     }
 }
 
@@ -203,14 +216,9 @@ void LayeredBfsAlg::finishPhase()
     }
     else
     {
-        printFinish();
+        sendMsg(rNode.getUid(),FIN,"none");
     }
     nodesAdded = 0;
-}
-
-void LayeredBfsAlg::printFinish()
-{
-    
 }
 
 void LayeredBfsAlg::sendMsg(int uid, int msgId, std::string msg)

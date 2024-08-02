@@ -12,7 +12,8 @@ const int PARENT = 0;
 const int CHILD_ACK = 1;
 const int REF_ACK = 2;
 const int LAYER_BC = 3;
-const int LAYER_CC = 4;
+const int LAYER_CC = 4
+const int FIN = 4
 const int TEST = 1000;
 
 
@@ -40,6 +41,8 @@ public:
 
     void handleLayerCcMsg(Message msg);
 
+    void handleFinish(Message msg);
+
     void handleAddLayerConverge();
     
     void init();
@@ -52,7 +55,6 @@ public:
 
     void compareDegree(int d);
 
-    void printFinish();
 
     void sendMsg(int uid, int msgId, std::string msg);
 
