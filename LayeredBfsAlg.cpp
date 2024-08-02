@@ -28,7 +28,7 @@ void LayeredBfsAlg::handleMsg(std::string msg)
         case LAYER_CC:
             handleLayerCcMsg(message);
             break;
-        case LAYER_CC:
+        case FIN:
             handleFinish(message);
             break;
         default:
