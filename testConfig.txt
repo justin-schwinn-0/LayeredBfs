@@ -4,7 +4,7 @@
 # a comment and should be ignored by the parser.
 #
 # Number of nodes
-7
+8
 # Here we list the individual nodes
 #
 # Format is:
@@ -16,6 +16,7 @@
 200 dc16.utdallas.edu 6213
 37 dc17.utdallas.edu 7245
 78 dc18.utdallas.edu 9286
+60 dc19.utdallas.edu 9286
 200
 # List of edges and their weight, one per line. An edge is denoted
 # by (smaller uid, larger uid)
@@ -28,3 +29,4 @@
 (37,78)
 (9,78)
 (9,200)
+(37,60)

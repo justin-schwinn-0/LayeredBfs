@@ -92,7 +92,7 @@ void LayeredBfsAlg::handleLayerBcMsg(Message msg)
 
         if(expectedConverges == 0)
         {
-            Utils::log("no children here, tree branch complete");
+            Utils::log("no children here, tree branch complete before send");
         }
     }
     else
