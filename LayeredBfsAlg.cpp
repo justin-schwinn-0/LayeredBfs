@@ -206,7 +206,7 @@ void LayeredBfsAlg::finishPhase()
     }
 }
 
-void LayeredBfsAlg::printFinish();
+void LayeredBfsAlg::printFinish()
 {
     
 }
