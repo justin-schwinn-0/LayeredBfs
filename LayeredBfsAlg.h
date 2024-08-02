@@ -48,6 +48,8 @@ public:
 
     void broadcastDown();
 
+    void finishPhase();
+
     void sendMsg(int uid, int msgId, std::string msg);
 
     Message decode(std::string msg);
