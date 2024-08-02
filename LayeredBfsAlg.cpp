@@ -157,9 +157,6 @@ void LayeredBfsAlg::handleFinish()
     {
         sendMsg(c,FIN,"none");
     }
-
-    sleep(1);
-    rNode.finishAlg();
 }
 
 void LayeredBfsAlg::handleAddLayerConverge()
