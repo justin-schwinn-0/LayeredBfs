@@ -102,7 +102,15 @@ void LayeredBfsAlg::handleLayerCcMsg(Message msg)
 
     if(converge())
     {
-        broadcastDown();
+        if(parent != -1)
+        {
+            // sum up the children sizes and send
+            sendMsg(parent,LAYER_CC,"sum here");
+        }
+        else
+        {
+            Utils::log("root restart BC not done yet")
+        }
     }
 }
 
