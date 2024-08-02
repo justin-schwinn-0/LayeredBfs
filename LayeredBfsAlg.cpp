@@ -78,14 +78,21 @@ void LayeredBfsAlg::handleLayerBcMsg(Message msg)
 {
     Utils::log("got layer message", msg.uid);
 
-    expectedConverges = 0;
-    for(int n : rNode.getConnectedUids())
+    if(children.size() == 0)
     {
-        if( n != parent)
+        expectedConverges = 0;
+        for(int n : rNode.getConnectedUids())
         {
-            sendMsg(n,PARENT,std::to_string(mDepth));
-            expectedConverges++;
+            if( n != parent)
+            {
+                sendMsg(n,PARENT,std::to_string(mDepth));
+                expectedConverges++;
+            }
         }
+    }
+    else
+    {
+        broadcastDown();
     }
 }
 
@@ -139,6 +146,7 @@ bool LayeredBfsAlg::converge()
 void LayeredBfsAlg::broadcastDown()
 {
     // broadcast down
+    expectedConverges = 0;
     for(int c : children)
     {
         sendMsg(c,LAYER_BC,"none");
