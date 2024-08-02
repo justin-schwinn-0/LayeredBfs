@@ -23,7 +23,7 @@ void LayeredBfsAlg::handleMsg(std::string msg)
             handleRefAckMsg(message);
             break;
         case LAYER_BC:
-            handleRefAckMsg(message);
+            handleLayerBcMsg(message);
             break;
         default:
             Utils::log("unknown message Id:", message.msgId);
