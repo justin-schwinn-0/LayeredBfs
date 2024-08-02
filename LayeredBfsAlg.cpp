@@ -109,6 +109,7 @@ void LayeredBfsAlg::handleLayerCcMsg(Message msg)
     int degree = Utils::strToInt(splits[1]);
     nodesAdded += nodes;
 
+
     compareDegree(degree);
 
 
@@ -128,7 +129,7 @@ void LayeredBfsAlg::handleLayerCcMsg(Message msg)
 void LayeredBfsAlg::handleFinish()
 {
 
-    Utils::log("Finished Layered BFS");
+    Utils::log("=============Finished Layered BFS=============");
 
     Utils::log("Parent",parent);
 
@@ -146,6 +147,10 @@ void LayeredBfsAlg::handleFinish()
     if(parent == -1)
     {
         Utils::log("highest degree in tree:",highestDegree);
+    }
+    else
+    {
+        Utils::log("distance to root:",mDepth);
     }
 
     for(int c : children)
