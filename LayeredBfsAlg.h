@@ -50,7 +50,7 @@ public:
 
     void finishPhase();
 
-    void compareDegree();
+    void compareDegree(int d);
 
     void sendMsg(int uid, int msgId, std::string msg);
 
