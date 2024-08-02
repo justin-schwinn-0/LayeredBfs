@@ -139,7 +139,7 @@ void LayeredBfsAlg::handleLayerCcMsg(Message msg)
 }
 void LayeredBfsAlg::handleFinish(Message msg)
 {
-    Utils::log("Print finish and propogate!") ;
+    Utils::log("Print finish and propogate!");
 
     for(int c : children)
     {
