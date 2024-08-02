@@ -131,6 +131,7 @@ void LayeredBfsAlg::handleFinish()
 
     Utils::log("=============Finished Layered BFS=============");
 
+    Utils::log("ID:",rNode.getUid());
     Utils::log("Parent",parent);
 
     std::string childStr = "";
